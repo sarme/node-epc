@@ -20,7 +20,7 @@ gulp.task('set-env-test', function() {
 });
 
 gulp.task('test', ['set-env-test', 'scripts'], function() {
-	return gulp.src('test.js', {
+	return gulp.src('test/**/*.js', {
 			read: false
 		})
 		// gulp-mocha needs filepaths so you can't have any plugins before it

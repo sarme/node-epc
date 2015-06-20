@@ -126,10 +126,6 @@ describe('epc', function() {
 			});
 
 			it('parse', function() {
-				// var p = sgtin.parse('30344B5A1C78902000000001');
-
-				// return p.should.be.fulfilled;
-
 				return sgtin.parse('30340789000C0E6000000001')
 					.then(function(parsed) {
 						expect(parsed.parts.Header).to.equal('00110000', 'Invalid header');
@@ -141,20 +137,20 @@ describe('epc', function() {
 					});
 			});
 
-			// it('getUri', function() {
-			//  var p = raw.getUri('123456789012345678ABCDEF');
+			it('getUri', function() {
+				var p = sgtin.getUri('30340789000C0E6000000001');
 
-			//  return p.should.become('urn:epc:raw:96.x123456789012345678ABCDEF');
-			// });
+				return p.should.become('urn:epc:tag:sgtin:0123456.012345.137438953473');
+			});
 
-			// it('getName', function() {
-			//  var p = raw.getName()
-			//    .fail(function(err) {
-			//      throw err;
-			//    });
+			it('getName', function() {
+				var p = sgtin.getName()
+					.fail(function(err) {
+						throw err;
+					});
 
-			//  return p.should.become('raw');
-			// });
+				return p.should.become('sgtin');
+			});
 		});
 
 	});

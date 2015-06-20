@@ -85,8 +85,10 @@ var self = Object.create(Abstract, {
 
 					self.base.getUri(val);
 
-					resolve('urn:epc:tag:sgtin:' + self.getLength(val) + '.x' + val);
-
+					self.parse(val)
+						.then(function(parsed) {
+							resolve('urn:epc:tag:sgtin:' + parsed.parts.CompanyPrefix + '.' + parsed.parts.ItemReference + '.' + parsed.parts.SerialNumber);
+						});
 				} catch (e) {
 					log.error(TAG, e);
 

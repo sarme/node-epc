@@ -8,6 +8,10 @@ var self = {
 	base: undefined,
 
 	parse: function(val) {
+		for (var p in self.parts)
+			if (self.parts.hasOwnProperty(p))
+				self.parts[p] = undefined;
+
 		self.epc = val;
 	},
 

@@ -47,7 +47,7 @@ var self = {
 		LocationReference: undefined,
 		Extension: undefined,
 		AssetType: undefined,
-		IndividulAssetReference: undefined,
+		IndividualAssetReference: undefined,
 		ServiceReference: undefined,
 		DocumentType: undefined,
 		ManagerNumber: undefined,

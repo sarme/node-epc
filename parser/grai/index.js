@@ -1,11 +1,11 @@
 'use strict';
 
-var TAG = 'parser.sgln';
-var header = '00110010';
+var TAG = 'parser.grai';
+var header = '00110011';
 var partition = {
 	bits: {
 		company: [40, 37, 34, 30, 27, 24, 20],
-		reference: [1, 4, 7, 11, 14, 17, 21]
+		reference: [4, 7, 10, 14, 17, 20, 24]
 	},
 	digits: {
 		company: [12, 11, 10, 9, 8, 7, 6],
@@ -30,7 +30,7 @@ var self = Object.create(Abstract, {
 					var bh = new self.base.bitsHelper(val, 96);
 
 					if (bh.bits.slice(0, 8) !== header)
-						throw new Error('Not a valid SGLN.');
+						throw new Error('Not a valid GRAI.');
 
 					self.parts.Header = bh.bits.slice(0, 8);
 					self.parts.Filter = parseInt(bh.bits.slice(8, 11), 2);
@@ -43,12 +43,12 @@ var self = Object.create(Abstract, {
 
 					self.parts.CompanyPrefix = company;
 
-					var reference = parseInt(bh.bits.slice(companyPrefixEnd, companyPrefixEnd + partition.bits.reference[self.parts.Partition]), 2).toString();
-					reference = Array(partition.digits.reference[self.parts.Partition] - reference.length + 1).join('0') + reference;
+					var type = parseInt(bh.bits.slice(companyPrefixEnd, companyPrefixEnd + partition.bits.reference[self.parts.Partition]), 2).toString();
+					type = Array(partition.digits.reference[self.parts.Partition] - type.length + 1).join('0') + type;
 
-					self.parts.LocationReference = reference;
+					self.parts.AssetType = type;
 
-					self.parts.Extension = parseInt(bh.bits.slice(55), 2);
+					self.parts.SerialNumber = parseInt(bh.bits.slice(58), 2);
 
 					resolve(self);
 				} catch (e) {
@@ -88,7 +88,7 @@ var self = Object.create(Abstract, {
 
 					self.parse(val)
 						.then(function(parsed) {
-							resolve('urn:epc:tag:sgln:' + parsed.parts.CompanyPrefix + '.' + parsed.parts.LocationReference + '.' + parsed.parts.Extension);
+							resolve('urn:epc:tag:grai:' + parsed.parts.CompanyPrefix + '.' + parsed.parts.AssetType + '.' + parsed.parts.SerialNumber);
 						});
 				} catch (e) {
 					log.error(TAG, e);
@@ -105,7 +105,7 @@ var self = Object.create(Abstract, {
 				try {
 					log.verbose(TAG, 'getName');
 
-					resolve('sgln');
+					resolve('grai');
 				} catch (e) {
 					log.error(TAG, e);
 

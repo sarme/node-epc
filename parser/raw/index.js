@@ -16,7 +16,7 @@ var self = Object.create(Abstract, {
 
 					self.base.parse(val);
 
-					resolve();
+					resolve(self);
 				} catch (e) {
 					log.error(TAG, e);
 
@@ -51,7 +51,6 @@ var self = Object.create(Abstract, {
 					self.base.getUri(val);
 
 					resolve('urn:epc:raw:' + self.getLength(val) + '.x' + val);
-
 				} catch (e) {
 					log.error(TAG, e);
 

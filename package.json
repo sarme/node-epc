@@ -1,28 +1,29 @@
 {
-  "name": "node-epc",
-  "version": "0.0.1",
-  "description": "A library for Node.js to parse EPC encoded values from Gen2 RFID tags.",
-  "main": "index.js",
-  "scripts": {
-    "test": "gulp test"
-  },
-  "author": "Sean Arme",
-  "copyright": "Copyright © 2015 Sean Arme",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "big-integer": "^1.4.6",
-    "moment": "^2.10.3",
-    "npmlog-ts": "0.0.1",
-    "q": "^1.4.1"
-  },
-  "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-as-promised": "^5.1.0",
-    "gulp": "^3.9.0",
-    "gulp-env": "^0.2.0",
-    "gulp-jshint": "^1.11.0",
-    "gulp-mocha": "^2.1.1",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5"
-  }
+	"name": "node-epc",
+	"email": "nodeepc@gmail.com",
+	"version": "0.1.0",
+	"description": "A library for Node.js to parse EPC encoded values from Gen2 RFID tags.",
+	"main": "index.js",
+	"scripts": {
+		"test": "gulp test"
+	},
+	"author": "Sean Arme",
+	"copyright": "Copyright © 2015 Sean Arme",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"big-integer": "^1.4.6",
+		"moment": "^2.10.3",
+		"npmlog-ts": "0.0.1",
+		"q": "^1.4.1"
+	},
+	"devDependencies": {
+		"chai": "^3.0.0",
+		"chai-as-promised": "^5.1.0",
+		"gulp": "^3.9.0",
+		"gulp-env": "^0.2.0",
+		"gulp-jshint": "^1.11.0",
+		"gulp-mocha": "^2.1.1",
+		"jshint": "^2.8.0",
+		"mocha": "^2.2.5"
+	}
 }

@@ -2,7 +2,7 @@
 
 global.chai = require('chai');
 global.chaiAsPromised = require("chai-as-promised");
-//assert = chai.assert,
+global.assert = global.chai.assert;
 global.expect = global.chai.expect;
 // epc = require('../index.js'),
 // raw = require('../parser/raw'),

@@ -39,11 +39,6 @@ describe('sscc', function() {
 	});
 
 	it('getName', function() {
-		var p = sscc.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('sscc');
+		global.assert.equal(sscc.getName(), 'SSCC');
 	});
 });

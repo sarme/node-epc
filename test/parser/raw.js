@@ -22,11 +22,6 @@ describe('raw', function() {
 	});
 
 	it('getName', function() {
-		var p = raw.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('raw');
+		global.assert.equal(raw.getName(), 'RAW');
 	});
 });

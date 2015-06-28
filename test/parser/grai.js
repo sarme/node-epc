@@ -40,11 +40,6 @@ describe('grai', function() {
 	});
 
 	it('getName', function() {
-		var p = grai.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('grai');
+		global.assert.equal(grai.getName(), 'GRAI');
 	});
 });

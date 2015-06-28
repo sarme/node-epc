@@ -30,7 +30,7 @@ var self = Object.create(Abstract, {
 					var bh = new self.base.bitsHelper(val, 96);
 
 					if (bh.bits.slice(0, 8) !== header)
-						throw new Error('Not a valid SGLN.');
+						throw new Error(val + ' is not a valid SGLN.');
 
 					self.parts.Header = bh.bits.slice(0, 8);
 					self.parts.Filter = parseInt(bh.bits.slice(8, 11), 2);
@@ -57,7 +57,6 @@ var self = Object.create(Abstract, {
 					reject(e);
 				}
 			});
-
 		}
 	},
 
@@ -101,17 +100,9 @@ var self = Object.create(Abstract, {
 
 	getName: {
 		value: function() {
-			return Q.Promise(function(resolve, reject) {
-				try {
-					log.verbose(TAG, 'getName');
+			log.verbose(TAG, 'getName');
 
-					resolve('sgln');
-				} catch (e) {
-					log.error(TAG, e);
-
-					reject(e);
-				}
-			});
+			return 'SGLN';
 		}
 	}
 });

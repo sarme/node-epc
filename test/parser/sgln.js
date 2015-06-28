@@ -40,11 +40,6 @@ describe('sgln', function() {
 	});
 
 	it('getName', function() {
-		var p = sgln.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('sgln');
+		global.assert.equal(sgln.getName(), 'SGLN');
 	});
 });

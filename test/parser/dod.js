@@ -38,11 +38,6 @@ describe('dod', function() {
 	});
 
 	it('getName', function() {
-		var p = dod.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('dod');
+		global.assert.equal(dod.getName(), 'DOD');
 	});
 });

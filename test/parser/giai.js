@@ -39,11 +39,6 @@ describe('giai', function() {
 	});
 
 	it('getName', function() {
-		var p = giai.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('giai');
+		global.assert.equal(giai.getName(), 'GIAI');
 	});
 });

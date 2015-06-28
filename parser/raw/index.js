@@ -62,17 +62,9 @@ var self = Object.create(Abstract, {
 
 	getName: {
 		value: function() {
-			return Q.Promise(function(resolve, reject) {
-				try {
-					log.verbose(TAG, 'getName');
+			log.verbose(TAG, 'getName');
 
-					resolve('raw');
-				} catch (e) {
-					log.error(TAG, e);
-
-					reject(e);
-				}
-			});
+			return 'RAW';
 		}
 	}
 });

@@ -40,11 +40,6 @@ describe('sgtin', function() {
 	});
 
 	it('getName', function() {
-		var p = sgtin.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('sgtin');
+		global.assert.equal(sgtin.getName(), 'SGTIN');
 	});
 });

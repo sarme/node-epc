@@ -38,11 +38,6 @@ describe('gid', function() {
 	});
 
 	it('getName', function() {
-		var p = gid.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('gid');
+		global.assert.equal(gid.getName(), 'GID');
 	});
 });

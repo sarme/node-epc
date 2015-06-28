@@ -40,11 +40,6 @@ describe('gdti', function() {
 	});
 
 	it('getName', function() {
-		var p = gdti.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('gdti');
+		global.assert.equal(gdti.getName(), 'GDTI');
 	});
 });

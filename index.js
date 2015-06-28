@@ -1,4 +1,3 @@
-/// <reference path="typings/node/node.d.ts"/>
 'use strict';
 
 var TAG = 'main';
@@ -27,6 +26,27 @@ if (process.env.NODE_ENV) {
 
 // main
 module.exports = {
+	getParser: function(encoding) {
+		return Q.Promise(function(resolve, reject) {
+			try {
+				var filePath = path.join(__dirname, 'parser', encoding);
+
+				var p = require(filePath);
+
+				if (p)
+					resolve(p);
+				else
+					reject('Unknown encoding.');
+
+			} catch (e) {
+				log.error(TAG, e);
+
+				reject(e);
+			}
+		});
+
+
+	},
 	parse: function(val) {
 		return Q.Promise(function(resolve, reject) {
 			try {
@@ -37,7 +57,12 @@ module.exports = {
 				if (!result)
 					throw new InvalidRFIDVal('"' + val + '" is an invalid value.  Expected 24 hexadecimal characters.');
 
-				fs.readdir('parser', function(err, files) {
+				fs.readdir(path.join(__dirname, 'parser'), function(err, files) {
+					if (!files) {
+						reject('Could not find any parsers.');
+
+						return;
+					}
 
 					var dirPromises = files.map(function(file) {
 						return Q.Promise(function(dir_resolve, dir_reject) {
@@ -68,15 +93,18 @@ module.exports = {
 							var canParsePromises = parsers.map(function(parser) {
 								return Q.Promise(function(parse_resolve, parse_reject) {
 									try {
-										if (!parser)
+										if (!parser) {
 											parse_reject();
+
+											return;
+										}
 
 										var p = require(parser);
 
 										p.canParse(val)
 											.then(function(canparse) {
 												if (canparse)
-													p.parse()
+													p.parse(val)
 													.then(function(parsed) {
 														parse_resolve(parsed);
 													});

@@ -39,11 +39,6 @@ describe('gsrn', function() {
 	});
 
 	it('getName', function() {
-		var p = gsrn.getName()
-			.fail(function(err) {
-				throw err;
-			});
-
-		return p.should.become('gsrn');
+		global.assert.equal(gsrn.getName(), 'GSRN');
 	});
 });

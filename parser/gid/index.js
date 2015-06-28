@@ -54,6 +54,7 @@ var self = Object.create(Abstract, {
 			});
 		}
 	},
+
 	getUri: {
 		value: function(val) {
 			return Q.Promise(function(resolve, reject) {

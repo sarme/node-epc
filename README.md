@@ -2,7 +2,7 @@
 
 A library for Node.js to parse EPC encoded values from Gen2 RFID tags.
 
-This library can be used to parse 96-bit values read from the EPC memory of a Gen2 RFID tag.  Parsers are included for the standard encodings as defined in ["2 GS1 EPC Tag Data Standard 1.6"](http://www.gs1.org/sites/default/files/docs/epc/tds_1_6-RatifiedStd-20110922.pdf "2 GS1 EPC Tag Data Standard 1.6").
+This library can be used to parse 96-bit values read from the EPC memory of a Gen2 RFID tag.  Parsers are included for the standard encodings as defined in ["GS1 EPC Tag Data Standard 1.6"](http://www.gs1.org/sites/default/files/docs/epc/tds_1_6-RatifiedStd-20110922.pdf "GS1 EPC Tag Data Standard 1.6").
 
 ##Installation
 **npm install node-epc --save**

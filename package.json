@@ -10,6 +10,14 @@
 	"author": "Sean Arme",
 	"copyright": "Copyright © 2015 Sean Arme",
 	"license": "Apache-2.0",
+    "keywords": [
+        "rfid",
+        "epc"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sarme/node-epc"
+    },
 	"dependencies": {
 		"big-integer": "^1.4.6",
 		"moment": "^2.10.3",

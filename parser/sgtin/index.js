@@ -25,20 +25,29 @@ var self = Object.create(Abstract, {
 					log.verbose(TAG, 'parse');
 					log.info(TAG, 'parsing %j', val);
 
+					// initialize base
 					self.base.parse(val);
 
+					// initalize the bit helper
 					var bh = new self.base.bitsHelper(val, 96);
 
+					// make sure the incoming value is really SGTIN by checking the header
 					if (bh.bits.slice(0, 8) !== header)
 						throw new Error(val + ' is not a valid SGTIN.');
 
+					// ok, looks good.  parse the stuff we'll need to figure out the rest
 					self.parts.Header = bh.bits.slice(0, 8);
 					self.parts.Filter = parseInt(bh.bits.slice(8, 11), 2);
 					self.parts.Partition = parseInt(bh.bits.slice(11, 14), 2);
 
+					// find the end of the company portion by calculating the number of bits 
+					// and adding it to the starting offset
 					var companyPrefixEnd = 14 + partition.bits.company[self.parts.Partition];
 
+					// get the company value from the bits, convert to a string
 					var company = parseInt(bh.bits.slice(14, companyPrefixEnd), 2).toString();
+
+					// pad the string with leading zeros to make-up the length according to the calculate length
 					company = Array(partition.digits.company[self.parts.Partition] - company.length + 1).join('0') + company;
 
 					self.parts.CompanyPrefix = company;
@@ -56,7 +65,6 @@ var self = Object.create(Abstract, {
 					reject(e);
 				}
 			});
-
 		}
 	},
 

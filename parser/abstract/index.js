@@ -8,10 +8,12 @@ var self = {
 	base: undefined,
 
 	parse: function(val) {
+		// reset all the default values for the parts object
 		for (var p in self.parts)
 			if (self.parts.hasOwnProperty(p))
 				self.parts[p] = undefined;
 
+			// store the original EPC value
 		self.epc = val;
 	},
 

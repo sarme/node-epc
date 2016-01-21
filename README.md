@@ -1,4 +1,4 @@
-#node-epc v0.1.0
+#node-epc v0.1.1
 
 A library for Node.js to parse EPC encoded values from Gen2 RFID tags.
 

@@ -29,7 +29,7 @@ module.exports = {
 	getParser: function(encoding) {
 		return Q.Promise(function(resolve, reject) {
 			try {
-				var filePath = path.join(__dirname, 'parser', encoding);
+				var filePath = path.join(__dirname, 'parser', encoding.toLowerCase());
 
 				var p = require(filePath);
 
